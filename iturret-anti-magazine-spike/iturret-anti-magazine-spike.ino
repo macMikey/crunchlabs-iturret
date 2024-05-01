@@ -3,6 +3,7 @@
 ************************************************************************************
 * MIT License
 *
+* copyright (c) 2024 mike kerner (anti magazine-spike)
 * Copyright (c) 2023 Crunchlabs LLC (IRTurret Control Code)
 * Copyright (c) 2020-2022 Armin Joachimsmeyer (IRremote Library)
 
@@ -74,7 +75,7 @@ Servo pitchServo; //names the servo responsible for PITCH rotation, up and down 
 Servo rollServo; //names the servo responsible for ROLL rotation, spins the barrel to fire darts
 
 int yawServoVal; //initialize variables to store the current value of each servo
-int pitchServoVal = 100;
+int pitchServoVal = 90;
 int rollServoVal;
 
 int pitchMoveSpeed = 8; //this variable is the angle added to the pitch servo to control how quickly the PITCH servo moves - try values between 3 and 10
@@ -86,8 +87,8 @@ int rollStopSpeed = 90; //value to stop the roll motor - keep this at 90
 int yawPrecision = 150; // this variable represents the time in milliseconds that the YAW motor will remain at it's set movement speed. Try values between 50 and 500 to start (500 milliseconds = 1/2 second)
 int rollPrecision = 158; // this variable represents the time in milliseconds that the ROLL motor with remain at it's set movement speed. If this ROLL motor is spinning more or less than 1/6th of a rotation when firing a single dart (one call of the fire(); command) you can try adjusting this value down or up slightly, but it should remain around the stock value (160ish) for best results.
 
-int pitchMax = 175; // this sets the maximum angle of the pitch servo to prevent it from crashing, it should remain below 180, and be greater than the pitchMin
-int pitchMin = 10; // this sets the minimum angle of the pitch servo to prevent it from crashing, it should remain above 0, and be less than the pitchMax
+int pitchMax = 140; // this sets the maximum angle of the pitch servo to prevent it from crashing, it should remain below 180, and be greater than the pitchMin
+int pitchMin = 60; // this sets the minimum angle of the pitch servo to prevent it from crashing, it should remain above 0, and be less than the pitchMax
 
 
 //////////////////////////////////////////////////
@@ -290,9 +291,8 @@ void homeServos(){
     delay(20);
     rollServo.write(rollStopSpeed); //setup ROLL servo to be STOPPED (90)
     delay(100);
-    pitchServo.write(100); //set PITCH servo to 100 degree position
+    pitchServo.write(pitchServoVal); //set PITCH servo to initial value
     delay(100);
-    pitchServoVal = 100; // store the pitch servo value
     Serial.println("HOMING");
 }
    
