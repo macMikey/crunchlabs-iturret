@@ -49,8 +49,8 @@
 //defines the specific command code for each button on the remote
 #define left 0x8
 #define right 0x5A
-#define up 0x52
-#define down 0x18
+#define up 0x18//0x52
+#define down 0x52//0x18
 #define ok 0x1C
 #define cmd1 0x45
 #define cmd2 0x46
@@ -286,6 +286,7 @@ void fireAll() { //function to fire all 6 darts at once
 }
 
 void homeServos(){
+    Serial.println("HOMING");
     yawServo.write(yawStopSpeed); //setup YAW servo to be STOPPED (90)
     delay(20);
     rollServo.write(rollStopSpeed); //setup ROLL servo to be STOPPED (90)
