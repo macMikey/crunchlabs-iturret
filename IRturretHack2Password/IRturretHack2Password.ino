@@ -6,7 +6,7 @@ bool passcodeEntered = false; // Flag to indicate if passcode has been entered c
 
 
 //////////////////////////////////////////////////
-                //  LIBRARIES  //
+               //  LIBRARIES  //
 //////////////////////////////////////////////////
 #include <Arduino.h>
 #include <Servo.h>
@@ -55,14 +55,14 @@ int yawStopSpeed = 90; //value to stop the yaw motor - keep this at 90
 int rollMoveSpeed = 90; //this variable is the speed controller for the continuous movement of the ROLL servo motor. It is added or subtracted from the rollStopSpeed, so 0 would mean full speed rotation in one direction, and 180 means full rotation in the other. Keep this at 90 for best performance / highest torque from the roll motor when firing.
 int rollStopSpeed = 90; //value to stop the roll motor - keep this at 90
 
-int yawPrecision = 150; // this variable represents the time in milliseconds that the YAW motor will remain at it's set movement speed. Try values between 50 and 500 to start (500 milliseconds = 1/2 second)
-int rollPrecision = 158; // this variable represents the time in milliseconds that the ROLL motor with remain at it's set movement speed. If this ROLL motor is spinning more or less than 1/6th of a rotation when firing a single dart (one call of the fire(); command) you can try adjusting this value down or up slightly, but it should remain around the stock value (270) for best results.
+int yawPrecision = 200; // this variable represents the time in milliseconds that the YAW motor will remain at it's set movement speed. Try values between 50 and 500 to start (500 milliseconds = 1/2 second)
+int rollPrecision = 270; // this variable represents the time in milliseconds that the ROLL motor with remain at it's set movement speed. If this ROLL motor is spinning more or less than 1/6th of a rotation when firing a single dart (one call of the fire(); command) you can try adjusting this value down or up slightly, but it should remain around the stock value (270) for best results.
 
 int pitchMax = 175; // this sets the maximum angle of the pitch servo to prevent it from crashing, it should remain below 180, and be greater than the pitchMin
 int pitchMin = 10; // this sets the minimum angle of the pitch servo to prevent it from crashing, it should remain above 0, and be less than the pitchMax
 
 //////////////////////////////////////////////////
-                //  S E T U P  //
+               //  S E T U P  //
 //////////////////////////////////////////////////
 void setup() {
     Serial.begin(9600);
@@ -85,7 +85,7 @@ void setup() {
 }
 
 ////////////////////////////////////////////////
-                //  L O O P  //
+               //  L O O P  //
 ////////////////////////////////////////////////
 
 void loop() {
@@ -125,10 +125,10 @@ void addPasscodeDigit(char digit) {
 }
 
 void handleCommand(int command) {
-    if((IrReceiver.decodedIRData.flags & IRDATA_FLAGS_IS_REPEAT) && !passcodeEntered){ // this checks to see if the command is a repeat
+   if((IrReceiver.decodedIRData.flags & IRDATA_FLAGS_IS_REPEAT) && !passcodeEntered){ // this checks to see if the command is a repeat
     Serial.println("DEBOUNCING REPEATED NUMBER - IGNORING INPUT");
     return; //discarding the repeated numbers prevent you from accidentally inputting a number twice
-    }
+   }
 
     switch (command) {
         case up:
@@ -366,4 +366,4 @@ void fireAll() { //function to fire all 6 darts at once
     delay(rollPrecision * 6); //time for 360 degrees of rotation
     rollServo.write(rollStopSpeed);//stop rotating the servo
     delay(5); // delay for smoothness
-}    
+}

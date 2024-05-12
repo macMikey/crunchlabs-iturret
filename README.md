@@ -2,13 +2,29 @@
 
 source from crunchlabs' iturret project
 
-
-
-## folders (sketches) in this repo:
+with the 1.0.0-a version, the libraries are included, so you can compile and install to the iturret right from the adruino desktop ide
 
 
 
-### iturret-anti-magazine-spike
+# versions:
+
+
+
+## 1.0.0-a
+
+* added the source and libs from the discord channel
+
+* now can compile and install from adruino desktop ide
+
+  
+
+## 1.0.0
+
+### folders (sketches) in this repo:
+
+
+
+#### iturret-anti-magazine-spike
 
 mikey hack that reduces the likelihood of the iturret spiking/throwing/RUD'ing the magazine when powered on.
 
@@ -20,7 +36,7 @@ this hack makes several changes:
 
 
 
-#### Discussion
+##### Discussion
 
 if the iturret is pointed upward, or downward, at enough of an angle, when it is turned on, the homing motion can be so fast that the magnets on the magazine may not be sufficient to keep the magazine attached. the turret can "spike" (in the football sense of spiking a ball) the magazine.
 
@@ -40,7 +56,7 @@ the project manages servo speed indirectly. it knows the angle the servo was com
 
 
 
-### iturret-base
+#### iturret-base
 
 the original ("level 1") source for the iturret
 
@@ -50,7 +66,7 @@ the original ("level 1") source for the iturret
 
 
 
-### iturret - password
+#### iturret - password
 
 source for the password-restricted hack
 
@@ -60,7 +76,7 @@ source for the password-restricted hack
 
 
 
-### iturret-roulette
+#### iturret-roulette
 
 source for the roulette hack
 
